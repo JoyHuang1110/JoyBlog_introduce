@@ -95,40 +95,46 @@
         vertical-align: middle;
     }
 
+    @media screen and (min-width: 768px) {
+        .wrap .main-header .main-nav {
+            margin: auto;
+        }
+
+        .wrap .main-header .main-nav a {
+            text-decoration: none;
+            color: blueviolet;
+            padding: 5px 1em;
+            font-size: 25px;
+            position: relative;
+            transform: translateY(0px);
+            transform: .3s;
+
+        }
+
+        .wrap .main-header .main-nav a:hover {
+            transform: translateY(-10px);
+        }
+
+        .wrap .main-header .main-nav a:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            bottom: -5px;
+            height: 0;
+            border-bottom: 1px solid blueviolet;
+            transform: .3s;
+        }
+
+        .wrap .main-header .main-nav a:hover:after {
+            left: 0;
+            right: 0;
+        }
+    }
+/*
     .wrap .main-header .main-nav {
-        margin: auto;
-    }
-
-    .wrap .main-header .main-nav a {
-        text-decoration: none;
-        color: blueviolet;
-        padding: 5px 1em;
-        font-size: 25px;
-        position: relative;
-        transform: translateY(0px);
-        transform: .3s;
-
-    }
-
-    .wrap .main-header .main-nav a:hover {
-        transform: translateY(-10px);
-    }
-
-    .main-header .main-nav a:after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        right: 50%;
-        bottom: -5px;
-        height: 0;
-        border-bottom: 1px solid blueviolet;
-        transform: .3s;
-    }
-
-    .main-header .main-nav a:hover:after {
-        left: 0;
-        right: 0;
-    }
+        display: none;
+    }*/
 
     /*介紹自己*/
     @media screen and (min-width: 768px) {
@@ -192,38 +198,69 @@
     }
 
     @media screen and (min-width: 768px) {
+
         .wrap .skill_text .item {
+            width: 100%;
             display: flex;
             align-items: center;
             margin-bottom: 70px;
         }
+
+        .wrap .skill_text .item .pic {
+            width: 50%;
+            flex-shrink: 0;
+        }
+
+        .wrap .skill_text .item .pic img {
+            width: 100%;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        .wrap .skill_text .item .txt {
+            width: 50%;
+            background-color: #FFED97;
+            flex-shrink: 0;
+            padding: 50px 30px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+
     }
 
+    .wrap .skill_text {
+        width: 100%;
+    }
 
-    .wrap .skill_text .pic {
-        width: 600px;
+    .wrap .skill_text .item {
+        width: 100%;
+        align-items: center;
+        margin-bottom: 70px;
+    }
+
+    .wrap .skill_text .item .pic {
+        width: 50%;
         flex-shrink: 0;
     }
 
-    .wrap .skill_text .pic img {
-        width: 100%;
+
+    .wrap .skill_text .item .pic img {
+        width: 500px;
         vertical-align: middle;
         position: relative;
     }
 
-    .wrap .skill_text .txt {
-        width: 600px;
+    /*
+    .wrap .skill_text .item .txt {
+        width: 50%;
         background-color: #FFED97;
         flex-shrink: 0;
         padding: 50px 30px;
         box-sizing: border-box;
         position: relative;
         z-index: 1;
-    }
-
-    .wrap .skill_text> :first-child {
-        margin-right: -10%;
-    }
+    }*/
 
     /*SC*/
     @media screen and (min-width: 768px) {
@@ -271,14 +308,34 @@
 
     }
 
+    .wrap .footer_img img {
+        width: 50%;
+        vertical-align: middle;
+        align-content: center;
 
-    @media screen and (min-width: 768px){
-            .wrap .main-footer .container {
-        display: flex;
-        width: 1200px;
-        margin: auto;
     }
+
+
+    @media screen and (min-width: 768px) {
+        .wrap .main-footer .container {
+            display: flex;
+            width: 1200px;
+            margin: auto;
+        }
+
+        .wrap .footer_img {
+            width: 50%;
+            margin: auto;
+
+        }
+
+        .wrap .footer_img img {
+            width: 100%;
+            margin: auto;
+
+        }
     }
+
     .wrap .footitem {
         width: 100%;
         flex-grow: 1;
@@ -310,8 +367,44 @@
         background-color: #C07AB8;
         color: aquamarine;
     }
-</style>
 
+    /*作品*/
+    .wrap .work .item {
+        display: flex;
+    }
+
+    .wrap .work .pic {
+        width: 70%;
+        display: flex;
+
+        position: relative;
+    }
+
+    .wrap .work .pic img {
+        width: 100%;
+        position: relative;
+    }
+
+    .wrap .work .txt {
+        width: 30%;
+        display: flex;
+        position: relative;
+        text-align: center;
+        padding: 30px 30px;
+        margin: auto;
+    }
+        .wrap .work .ppt {
+        width: 80%;
+        display: flex;
+        position: relative;
+        margin: auto;
+        align-items: center;
+            
+    }
+
+    .wrap .work .txt h2 {}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     $(function() {
         $('#BackTop').click(function() {
@@ -341,7 +434,6 @@
                     <a href="#skill">My Skills</a>
                     <a href="#work">My Works</a>
                     <a href="#sc">School and Career Experiences</a>
-                    <a href="#other">Others</a>
                     <a href="#contact">Contact</a>
                 </nav>
             </div>
@@ -357,7 +449,7 @@
                         </small>
                     </h1>
                     <h2>About Joy's Introduce.</h2>
-                    <p></p>
+                    <h4 style="font-size: 25px">愛貓人士◆陸劇韓劇愛好者◆小說</h4>
                     <br>
                 </div>
             </div>
@@ -390,9 +482,9 @@
             <div class="skill_text">
                 <div class="item">
                     <div class="pic">
-                        <img style="width: 600px ;height: 600px" src="computer.png" alt="">
+                        <img style="height: 600px" src="computer.png" alt="">
                     </div>
-                    <div class="txt">
+                    <div class="txt" style="background-color: #FFED97;">
                         <h2>電腦能力:</h2>
                         <p style="font-size: 23px">
                             程式軟體:
@@ -423,15 +515,32 @@
                         </p>
                     </div>
                     <div class="pic">
-                        <img style="width: 600px ;height: 600px" src="abc.jpg" alt="">
+                        <img style="height: 600px" src="abc.jpg" alt="">
                     </div>
                 </div>
             </div>
         </div>
         <br>
-        <div>
+        <div class="work">
             <h1 style="font-size: 60px ; text-align: center; background-color: 	#E6CAFF" id="work">My Works</h1>
+            <br>
+            <h1 style="text-align: center; color: #FF5809; font-size: 50px;margin-bottom:0px">大三物聯網設計之靜態網頁</h1>
+            <div class="item">
 
+                <div class="pic"><img src="iot.jpg" alt=""></div>
+                <div class="txt">
+                    <h2><a href="http://140.136.208.34/iot09a/06%20mid/16%20407040160+407040457/%e6%9c%9f%e4%b8%ad%e5%b0%88%e9%a1%8c%e6%98%af%e9%80%99%e5%80%8b%e5%96%94.html">點我前往觀看。</a></h2>
+                </div>
+            </div>
+            <br><br>
+            <h1 style="text-align: center; color:#FF5809; font-size: 50px;margin-bottom:0px">大三大數據之房地產分析小專題</h1>
+            <div class="item">
+
+                <div class="ppt"><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS1dXDKwHcSZXplTsxcJHTBVWsUEgUrwsM2fx5RHl3bCKjRQU-hpRhvkGWNtv0BMQ/embed?start=true&loop=false&delayms=3000" frameborder="0" width="1280" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div>
+                <div class="txt">
+                   
+                </div>
+            </div>
         </div>
         <br>
 
@@ -513,7 +622,7 @@
                     </div>
                 </div>
             </div>
-            <table style="margin: auto; display: table-row-group;" width="1200px" border="2">
+            <table style="margin:auto; display: table-row-group;" width="1200px" border="2">
                 <tr>
                     <td>
                         <h3 style="font-size: 25px;text-align: center">社團/系學會經驗</h3>
@@ -552,10 +661,10 @@
             </table>
         </div>
         <br>
-        <h1 style="text-align: center; color: 	#2828FF; font-size: 60px;margin-bottom:0px" >Career</h1>
+        <h1 style="text-align: center; color: #2828FF; font-size: 60px;margin-bottom:0px">Career</h1>
         <br>
-        <div style="background-color: #FFF4C1; " class="table_c">
-            <table style="margin: auto;display: table-row-group;" width="1200px" border="2">
+        <div style="background-color: #FFF4C1 ;">
+            <table style="margin: auto;" width="100%" border="2">
                 <tr>
                     <td>
                         <h3 style="font-size: 25px;text-align: center">單位名稱</h3>
@@ -630,21 +739,18 @@
         </div>
 
         <br>
-        <div>
-            <h1 style="font-size: 60px ; text-align: center; background-color: 	#E6CAFF" id="other">Others</h1>
-        </div>
         <br>
         <div class="main-footer">
             <div class="container">
                 <div class="footitem">
                     <h4 id="contact">Contact Information</h4>
-                    <h5>電子信箱</h5>
-                    <h5>住址</h5>
-                    <h5>手機</h5>
+                    <h5>電子信箱: 407040160@mail.fju.edu.tw</h5>
+                    <h5>住址:242新北市新莊區中正路510號</h5>
+                    <h5>手機:0922123123</h5>
                 </div>
                 <div class="footitem">
                     <h4>Reference</h4>
-                    <h5>金魚都能懂的網頁切版</h5>
+                    <h5>金魚都能懂的網頁切版(youtube)</h5>
                 </div>
                 <div class="footer_img">
                     <img src="fju.jpg" alt="">
