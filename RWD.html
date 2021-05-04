@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+    <title>Joy's Blog</title>
+</head>
+<style type="text/css">
+    * {
+        /*css-reset*/
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    /*RWD*/
+
+    .wrap {
+        width: 100%;
+        max-width: 1400px;
+        margin: auto;
+    }
+
+
+    /*首頁*/
+    /*內容 文字做到滿版高度*/
+    .wrap .banner {
+        width: 100%;
+        height: 700px;
+        /*視窗高度height:100vh;*/
+        background-color: cornsilk;
+        background:
+            /*漸層色*/
+            linear-gradient(115deg, white 50%, transparent 50%) center center / 100% 100%
+            /*寬高*/
+            , url("https://dvblobcdnjp.azureedge.net//Content/Upload/Popular/Images/2018-09/ce2f0327-08dc-4131-9071-4eefe1f67ec2_m.jpg") right center /auto 100%;
+    }
+
+    .wrap .container {
+        /*width避免該元素從左到右撐滿容器，然後你可以設定左右外邊距（margin-left 與 margin-right）為 auto 來使其水平居中。元素在顯示的時候，只會顯示到你所指定的寬度，然後剩餘的寬度平均的散落在左右兩邊的邊距上。*/
+        /*width: 1200px;*/
+        width: 100%;
+        max-width: 1440px;
+        margin: auto;
+        height: 100%;
+    }
+
+    .wrap .banner-txt {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        /*不要填滿整個區塊*/
+    }
+
+    .wrap .banner-txt h1 {
+        font-size: 80px;
+        border-bottom: 1px solid #333;
+    }
+
+    .wrap .banner-txt h1 small {
+        display: block;
+        font-size: 53px;
+    }
+
+    .wrap .banner-txt h2 {
+        font-size: 50px;
+    }
+
+    .wrap .banner.txt p {
+        font-size: 30px;
+    }
+
+    /*導覽列*/
+    .wrap .main-header {
+        background-color: aliceblue;
+    }
+
+    .wrap .main-header .container {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .wrap .main-header .logo {
+        width: 100px;
+    }
+
+    .wrap .main-header .logo img {
+        width: 100%;
+        vertical-align: middle;
+    }
+
+    .wrap .main-header .main-nav {
+        margin: auto;
+    }
+
+    .wrap .main-header .main-nav a {
+        text-decoration: none;
+        color: blueviolet;
+        padding: 5px 1em;
+        font-size: 25px;
+        position: relative;
+        transform: translateY(0px);
+        transform: .3s;
+
+    }
+
+    .wrap .main-header .main-nav a:hover {
+        transform: translateY(-10px);
+    }
+
+    .main-header .main-nav a:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        right: 50%;
+        bottom: -5px;
+        height: 0;
+        border-bottom: 1px solid blueviolet;
+        transform: .3s;
+    }
+
+    .main-header .main-nav a:hover:after {
+        left: 0;
+        right: 0;
+    }
+
+    /*介紹自己*/
+    @media screen and (min-width: 768px) {
+        .wrap .text_about_me .about_me {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .wrap .text_about_me .about_me img {
+        width: 100%;
+        position: relative;
+
+    }
+
+    /*回到頂端*/
+    .toTop-arrow {
+        width: 3.5rem;
+        height: 3.5rem;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        border-radius: 33%;
+        opacity: 0.6;
+        background: #E680FF;
+        cursor: pointer;
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        display: none;
+    }
+
+    .toTop-arrow::before,
+    .toTop-arrow::after {
+        width: 31px;
+        height: 7px;
+        border-radius: 3px;
+        background: #E6005C;
+        position: absolute;
+        content: "";
+    }
+
+    .toTop-arrow::before {
+        transform: rotate(-45deg) translate(0, -50%);
+        left: 0.4rem;
+    }
+
+    .toTop-arrow::after {
+        transform: rotate(45deg) translate(0, -50%);
+        right: 0.4rem;
+    }
+
+    .toTop-arrow:focus {
+        outline: none;
+    }
+
+    /*My skill*/
+    .wrap .skill_text {
+        width: 1200px;
+        margin: auto;
+    }
+
+    @media screen and (min-width: 768px) {
+        .wrap .skill_text .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 70px;
+        }
+    }
+
+
+    .wrap .skill_text .pic {
+        width: 600px;
+        flex-shrink: 0;
+    }
+
+    .wrap .skill_text .pic img {
+        width: 100%;
+        vertical-align: middle;
+        position: relative;
+    }
+
+    .wrap .skill_text .txt {
+        width: 600px;
+        background-color: #FFED97;
+        flex-shrink: 0;
+        padding: 50px 30px;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 1;
+    }
+
+    .wrap .skill_text> :first-child {
+        margin-right: -10%;
+    }
+
+    /*SC*/
+    @media screen and (min-width: 768px) {
+        .wrap .sc_exp {
+            display: flex;
+            width: 1200px;
+            margin: 30px auto;
+            /*background-color: darksalmon;*/
+        }
+    }
+
+    .wrap .sc_exp .item {
+        width: 370px;
+        margin: 0 15px;
+        text-align: center;
+        border: 5px solid #FFD306;
+        border-radius: 20px;
+        background-color: #FFF7FF;
+    }
+
+    .wrap .sc_exp .item .txt {
+        padding: 20px;
+    }
+
+    .wrap .sc_exp .item .txt h3 {
+        font-size: 30px;
+        color: #FF60AF;
+    }
+
+    .wrap .sc_exp .item .txt p {
+        text-align: left;
+        font-size: 25px;
+        color: #000000;
+    }
+
+    /*頁尾*/
+    .wrap .main-footer {
+        padding: 150px 0 0;
+        background: linear-gradient(-20deg, #C4E1FF, #ECFFFF)
+    }
+
+    .wrap .footer_img {
+        width: 100%;
+        margin: auto;
+
+    }
+
+
+    @media screen and (min-width: 768px){
+            .wrap .main-footer .container {
+        display: flex;
+        width: 1200px;
+        margin: auto;
+    }
+    }
+    .wrap .footitem {
+        width: 100%;
+        flex-grow: 1;
+        margin: 0 20px;
+    }
+
+    .wrap .footitem h4 {
+        font-size: 30px;
+        color: dodgerblue;
+        border-bottom: 1px solid #2828FF;
+        margin-bottom: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    .wrap .footitem h5 {
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.4;
+        text-decoration: none;
+        padding: 5px 0;
+    }
+
+    .wrap .copyright {
+        width: 100%;
+        text-align: center;
+        margin: 150px 0 0;
+        padding: 10px 0px;
+        background-color: #C07AB8;
+        color: aquamarine;
+    }
+</style>
+
+<script>
+    $(function() {
+        $('#BackTop').click(function() {
+            $('html,body').animate({
+                scrollTop: 0
+            }, 333);
+        });
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 300) {
+                $('#BackTop').fadeIn(222);
+            } else {
+                $('#BackTop').stop().fadeOut(222);
+            }
+        }).scroll();
+    });
+</script>
+
+<body>
+    <div class="wrap">
+        <header class="main-header">
+            <div class="container">
+                <a href="#" class="logo">
+                    <img src="cat.jpg" alt="">
+                </a>
+                <nav class="main-nav">
+                    <a href="#">About Me</a>
+                    <a href="#">My Skills</a>
+                    <a href="#">My Works</a>
+                    <a href="#">School and Career Experiences</a>
+                    <a href="#">Others</a>
+                    <a href="#">Contact</a>
+                </nav>
+            </div>
+
+        </header>
+
+        <div class="banner">
+            <div class="container">
+                <div class="banner-txt">
+                    <h1 style="color: orange">Joy's Blog
+                        <small>
+                            407040160 圖資三 黃詩佳
+                        </small>
+                    </h1>
+                    <h2>About Joy's Introduce.</h2>
+                    <p></p>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div style="background-color: #FFF7FB " class="text_about_me">
+            <h1 style="font-size: 60px ; text-align: center; background-color: 	#E6CAFF">About Me</h1>
+            <div class="about_me">
+                <h2 style="padding: 80px">姓名:黃詩佳<br>
+                    學號:407040160 <br>
+                    系級:圖資三 <br>
+                    興趣:<ul type="disc">
+                        <li>喜歡欣賞戲劇和閱讀小說來放鬆。</li>
+                        <li>喜歡與人交際和小動物互動。</li>
+                        <li>嘗試新事物，比如偶爾跳個舞、唱歌、摸索樂器。</li>
+                        <li>四處蒐羅美食。</li>
+                        <li>看財經節目，研究金融股票、理財工具(e.g.信用卡)。</li>
+                        <li>喜歡看硬體設備相關影片，有自己換過主機CPU與加裝RAM過的經驗。</li>
+                    </ul>
+                </h2>
+                <img style=" width: 300px;" src="cat.jpg" alt="">
+            </div>
+        </div>
+        <br>
+
+        <div>
+            <h1 style="font-size: 60px ; text-align: center; background-color: 	#E6CAFF">My Skills</h1>
+            <br>
+            <br>
+            <div class="skill_text">
+                <div class="item">
+                    <div class="pic">
+                        <img style="width: 600px ;height: 600px" src="computer.png" alt="">
+                    </div>
+                    <div class="txt">
+                        <h2>電腦能力:</h2>
+                        <p style="font-size: 23px">
+                            程式軟體:
+                            Python(基礎)、C++(基礎)、威力導演(略懂)、安裝Linux(虛擬機安裝經驗)與windows(重灌經驗)。<br><br>
+                            文書處理:<br>
+                            Word:中打80 WPM、英打50 WPM。<br>
+                            Powerpoint:美編與動態設計。<br>
+                            Excel:修習過相關課程，熟悉基礎操作與部分函數。<br>
+                            Access:課堂有使用過並設計一個小型資料庫。<br><br>
+                            影片剪輯:
+                            威力導演:簡單使用電腦剪輯的功能。<br>
+                            圖片編輯:
+                            Photoshop:使用手機app進行簡單照片合成與修改。
+
+                        </p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="txt" style="background-color: #DFFFDF">
+                        <h2 style="text-align: center">語文能力:</h2>
+                        <p style="text-align: center;font-size: 25px">
+                            中文:精通<br>
+                            閩南語:聽-精通、說-中等<br>
+                            英文:中等<br>
+                            日文:略懂<br>
+                            韓文:略懂<br>
+                            西班牙文:基礎
+                        </p>
+                    </div>
+                    <div class="pic">
+                        <img style="width: 600px ;height: 600px" src="abc.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <h1 style="font-size: 60px ; text-align: center; background-color: 	#E6CAFF">My Works</h1>
+
+        </div>
+        <br>
+
+        <h1 style="font-size: 60px ; text-align: center; background-color: 	#E6CAFF">School and Career Experiences</h1>
+        <br>
+        <h1 style="text-align: center; color: 	#2828FF; font-size: 60px;margin-bottom:0px">School</h1>
+        <div style="background-color:#FFF4C1 ; margin-top: 0;">
+            <div class="sc_exp">
+                <div class="item">
+                    <div class="txt">
+                        <h3>大一</h3>
+                        <p>計算機概論<br>
+                            參考資源<br>
+                            資訊組織<br>
+                            媒體概論<br>
+                            圖書資訊學導論<br>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div class="txt">
+                        <h3>大二</h3>
+                        <p> 統計學<br>
+                            資料庫系統概論<br>
+                            主題分析<br>
+                            館藏發展<br>
+                            計算機網路<br>
+                            資料結構<br>
+                            書目計量學導論<br>
+                            Linux桌面系統<br>
+                            Koha圖書館管理系統<br>
+                            數位出版與數位閱讀<br>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div class="txt">
+                        <h3>大三</h3>
+                        <p> 讀者服務<br>
+                            作業系統<br>
+                            物聯網技術與應用<br>
+                            大數據資料分析與應用<br>
+                            專利資訊(修讀中)<br>
+                            網頁設計(修讀中)<br>
+                            人工智慧(修讀中)<br>
+                            人工智慧系統開發(修讀中)
+                        </p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="txt">
+                        <h3>系外選修</h3>
+                        <p>
+                            Python程式設計進階<br>
+                            基礎日文<br>
+                            Excel 試算表的統計應用<br>
+                            普通化學<br>
+                            進階日文(修讀中)<br>
+                            中國后妃政治<br>
+                            中國小說與文化<br>
+                            東西文化的整合-以吳經熊為例<br>
+                            腦科學與生活
+                        </p>
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div class="txt">
+                        <h3>雙主修/輔系</h3>
+                        <p>
+                            大一西文會話<br>
+                            大一西文聽力<br>
+                            商業自動化<br>
+                            網路行銷<br>
+                            大一西文文法(修讀中)<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <table style="margin: auto; display: table-row-group;" width="1200px" border="2">
+                <tr>
+                    <td>
+                        <h3 style="font-size: 25px;text-align: center">社團/系學會經驗</h3>
+                    </td>
+                    <td>
+                        <h3 style="font-size: 25px;text-align: center">學術活動籌備或參與研究計畫經驗</h3>
+                    </td>
+                    <td>
+                        <h3 style="font-size: 25px;text-align: center">其他</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3 style="font-size: 25px;">
+                            無。<br>
+                            但是有參與過系上活動:大一籃球比賽以及迎新茶會。
+
+                        </h3>
+                    </td>
+                    <td>
+                        <h3 style="font-size: 25px;">
+                            無。<br>
+                            但有和同學一起進行小型房屋買賣的大數據專案分析。
+
+                        </h3>
+                    </td>
+                    <td>
+                        <h3 style="font-size: 25px;">
+                            107-1嘉獎一支:參與籃球新生盃。<br>
+                            107-1校慶時參與射擊比賽。<br>
+                            107投稿學校野生文學獎新詩組。<br>
+                            接觸設計過靜態網頁設計(html、javascript、css)。
+                        </h3>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <h1 style="text-align: center; color: 	#2828FF; font-size: 60px;margin-bottom:0px">Career</h1>
+        <br>
+        <div style="background-color: #FFF4C1; " class="table_c">
+            <table style="margin: auto;display: table-row-group;" width="1200px" border="2">
+                <tr>
+                    <td>
+                        <h3 style="font-size: 25px;text-align: center">單位名稱</h3>
+                    </td>
+                    <td>
+                        <h3 style="font-size: 25px;text-align: center">工作內容/職稱</h3>
+                    </td>
+                    <td>
+                        <h3 style="font-size: 25px;text-align: center">起訖時間</h3>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h3 style="font-size: 25px;">
+                            明新診所
+
+                        </h3>
+                    </td>
+
+                    <td>
+                        <h3 style="font-size: 25px;">
+                            診所助理
+
+                        </h3>
+                    </td>
+                    <td>
+                        <h3 style="font-size: 25px;">
+                            2018.8.10~至今
+                        </h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3 style="font-size: 25px;">
+                            資訊中心(服務學習)
+                        </h3>
+                    </td>
+
+                    <td>
+                        <h3 style="font-size: 25px;">
+                            管理電腦教室與整理
+
+                        </h3>
+                    </td>
+                    <td>
+                        <h3 style="font-size: 25px;">
+                            2019.3~2019.5
+                        </h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3 style="font-size: 25px;">
+                            輔大圖書館(服務學習)
+                        </h3>
+                    </td>
+
+                    <td>
+                        <h3 style="font-size: 25px;">
+                            整理與維護期刊
+
+                        </h3>
+                    </td>
+                    <td>
+                        <h3 style="font-size: 25px;">
+                            2019.10~2019.12
+                        </h3>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+        <div>
+            <h1 style="font-size: 60px ; text-align: center; background-color: 	#E6CAFF">Others</h1>
+        </div>
+        <br>
+        <div class="main-footer">
+            <div class="container">
+                <div class="footitem">
+                    <h4>Contact Information</h4>
+                    <h5>電子信箱</h5>
+                    <h5>住址</h5>
+                    <h5>手機</h5>
+                </div>
+                <div class="footitem">
+                    <h4>Reference</h4>
+                    <h5>金魚都能懂的網頁切版</h5>
+                </div>
+                <div class="footer_img">
+                    <img src="fju.jpg" alt="">
+                </div>
+
+            </div>
+            <div class="copyright">
+                &copy;2019 The site made by Joy.
+            </div>
+
+        </div>
+    </div>
+    <button type="button" id="BackTop" class="toTop-arrow"></button>
+
+</body></html>
